@@ -21,7 +21,7 @@ const addJobController=async(req,res)=>{
             });
           }
           jwt.verify(token, process.env.SECRET, {}, async (err, info) => {
-            console.log("info="+info)
+            console.log("info in jwt.verify="+info)
             if (err) {
               res.status(401).json("Not authorized");
             }

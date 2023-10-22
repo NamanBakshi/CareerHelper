@@ -6,7 +6,7 @@
   pointer-events: none;
 }
 
-.main:before {
+/* .main:before {
   background: radial-gradient(circle, rgba(2, 0, 36, 0) 0, #fafafa 100%);
   position: absolute;
   content: "";
@@ -14,9 +14,9 @@
   width: 100%;
   height: 100%;
   top: 0;
-}
+} */
 
-.main:after {
+/* .main:after {
   content: "";
   background-image: url("/src/assets/grid.svg");
   z-index: 1;
@@ -26,7 +26,7 @@
   top: 0;
   opacity: 0.4;
   filter: invert(1);
-}
+} */
 
 .gradient {
   height: fit-content;

@@ -1,23 +1,24 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-//import { UserContext } from "../Context/userContext";
+import { UserContext } from "../Context/userContext";
 import Ratings from "./Ratings";
-
 import { BriefcaseIcon } from "@heroicons/react/24/outline";
 import { Button } from "@material-tailwind/react";
 import heroImg from "../assets/hero-img.svg";
-import homeImg from "../assets/bg.jpg";
+import bg from "../assets/bg.jpg";
 import Contact from "./Contact";
 
 const Hero = () => {
-  //const { user } = useContext(UserContext);
-  //const id = user?.id;
+  const { user } = useContext(UserContext);
+  //console.log("user= "+JSON.stringify(user))
+  const id = user?.id;
+  //console.log("id= "+id)
 
   return (
     <main
       style={{
-        backgroundImage: `url(${homeImg})`,
+        backgroundImage: `url(${bg})`,
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
         backgroundPosition: "center",
@@ -72,8 +73,8 @@ const Hero = () => {
               </Button>
             </Link>
             
-            {/* <Link to={id ? "/addjob" : "/register"}> */}
-            <Link to="/register">
+            <Link to={id ? "/addjob" : "/login"}>
+            {/* <Link to="/register"> */}
               
               <Button
                 color="cyan"

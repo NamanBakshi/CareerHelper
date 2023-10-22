@@ -55,7 +55,7 @@ const loginController=async (req,res)=>{
                 message:"Invalid Email or Password!"
             })
         }
-        console.log("findmail="+findmail)
+        //console.log("findmail="+findmail)
         //checking for correct passowrd and returning token
         const validPassword = await bcrypt.compareSync(password, findmail.password);
         if(!validPassword){ return res.status(402).send({
@@ -71,13 +71,14 @@ const loginController=async (req,res)=>{
                 //creating a jwt token with the help of jsonwebtoken package
                 var token = jwt.sign(payload,process.env.SECRET);
                 return  res.cookie("token",token,
-                {expires: new Date(Date.now() + 86400000),
+                {
                 httpOnly:true
                 }).status(200).json({
                     success:true ,
                     message :"Login Successful" ,
                     id:findmail._id,
-                    name:findmail.name
+                    name:findmail.name,
+                    email:findmail.email
                     }) ;
 
           }
