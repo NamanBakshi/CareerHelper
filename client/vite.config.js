@@ -22,6 +22,18 @@ export default defineConfig({
       target:"http://localhost:5000",
       changeOrigin: true
     },
+    '/getjobs':{ 
+      target:"http://localhost:5000",
+      changeOrigin: true
+    },
+    '/addjobs':{ 
+      target:"http://localhost:5000",
+      changeOrigin: true
+    },
+    '/job':{ 
+      target:"http://localhost:5000",
+      changeOrigin: true
+    },
   }
 }
 })

@@ -10,6 +10,7 @@ import { UserContextProvider } from "./Context/userContext";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import CreateJob from "./components/CreateJob";
 import UserProfile from "./components/UserProfile";
+import JobDetails from "./components/JobDetails";
 
 
 const appRouter=createBrowserRouter([  //array of object 
@@ -19,10 +20,11 @@ const appRouter=createBrowserRouter([  //array of object
     children:[
       { path: "/", element: <Hero /> },
        { path: "/jobs", element: <AllJobs /> },
-       { path: "/addJob", element: <CreateJob /> },
+       { path: "/addjobs", element: <CreateJob /> },
        { path: "/register", element: <Register /> },
        { path: "/login", element: <Login /> }, 
        { path: "/profile", element: <UserProfile /> },
+       { path: "/job/:id", element: <JobDetails /> },
 
     ]
 }

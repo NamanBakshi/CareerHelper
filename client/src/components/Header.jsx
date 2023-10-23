@@ -33,7 +33,7 @@ const Header=()=>{
       const response=await fetch("http://localhost:5173/profile",{
         credentials:"include"
       })
-      console.log(response)
+      console.log("response from /profile= "+response)
       const data= response.json()
       //console.log("data from /profile= "+JSON.stringify(data))
       setUser(data)
@@ -73,10 +73,10 @@ const Header=()=>{
             </Link>
 
             <div className="flex items-center gap-3">
-            {id &&  <Link to={"/addjob"}>
+            {id &&  <Link to={"/addjobs"}>
                 <Button
                   variant="text"
-                  className="p-0 hidden w-28 flex items-center gap-2"
+                  className="px-3 hidden w-[32] flex items-center gap-2"
                 >
                   <PencilSquareIcon className="h-6 w-6" />
                   <Typography className="text-md ">
@@ -127,8 +127,10 @@ const Header=()=>{
 
                 <MenuItem>
                   <Link to={"/addjob"} className="flex gap-2">
+                   
                     <PencilSquareIcon className="h-5 w-5" />
                     Post a Job
+                    
                   </Link>
                 </MenuItem>
 
