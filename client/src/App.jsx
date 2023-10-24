@@ -4,8 +4,8 @@ import Register from "./components/Register";
 import AllJobs from "./components/AllJobs"
 import Login from "./components/Login";
 import EditJob from "./components/EditJob"
-// import Error from "./components/Error";
- import Hero from "./components/Hero";
+import Error from "./components/Error";
+import Hero from "./components/Hero";
 import { UserContextProvider } from "./Context/userContext";
 // import ScrollToTop from "./components/ScrollToTop";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
@@ -17,7 +17,8 @@ import JobDetails from "./components/JobDetails";
 const appRouter=createBrowserRouter([  //array of object 
     {path:"/",
     element:<App />,
-    
+    errorElement: <Error />,
+
     children:[
       { path: "/", element: <Hero /> },
        { path: "/jobs", element: <AllJobs /> },

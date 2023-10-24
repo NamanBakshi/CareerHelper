@@ -13,43 +13,22 @@ const Contact = () => {
     email:"",
     mess:""
   })
-  // const [inname,setinname]=useState("")
-  // const [inemail,setinemail]=useState("")
-  // const [inmess,setinmess]=useState("")
-
-//   const sendEmail = (e) => {
-//     e.preventDefault();
-
-//     emailjs
-//       .sendForm(
-//         "service_iybp9sm",
-//         "template_1dnr4w1",
-//         e.target,
-//         "4i6NhRQVTAgwoBcc9"
-//       )
-//       .then(
-//         (result) => {
-//           console.log(result.text);
-//         },
-//         (error) => {
-//           console.log(error.text);
-//         }
-//       );
-//     e.target.reset();
-//     showMessage(true);
-//   };
-const submit=()=>{
+ 
+const submitonclick=()=>{
     if(!values.email || !values.mess || !values.name) return (alert("enter all details"))
     setValues({
       name:"",
       mess:"",
       email:""
     })
-    return (
-        showMessage(!message)
-    )
-    
+    setTimeout(()=>{
+      
+      showMessage(false)
+    },2000)
+    showMessage(true)
+
 }
+
   return (
     <div className="min-h-[84vh] w-full flex flex-col justify-center items-center">
       <Typography
@@ -82,8 +61,9 @@ const submit=()=>{
                   name="name"
                   label="Enter Your Name"
                   value={values.name}
-                  onChange={(e)=>setValues({name:e.target.value})}
+                  onChange={(e)=>setValues({...values,name:e.target.value})}
                   required
+                  color="blue"
                 />
               </div>
               <div className="mb-6">
@@ -92,8 +72,9 @@ const submit=()=>{
                   name="email"
                   label="Enter Your Email"
                   value={values.email}
-                  onChange={(e)=>setValues({email:e.target.value})}
+                  onChange={(e)=>setValues({...values,email:e.target.value})}
                   required
+                  color="blue"
                 />
               </div>
               <div className="mb-6">
@@ -102,21 +83,16 @@ const submit=()=>{
                   name="message"
                   label="Enter Message"
                   value={values.mess}
-                  onChange={(e)=>setValues({mess:e.target.value})}
+                  onChange={(e)=>setValues({...values,mess:e.target.value})}
                   required
+                  color="blue"
                 />
               </div>
               <div>
-                <Button variant="gradient" onClick={submit} fullWidth>
+                <Button color="blue" variant="gradient" onClick={submitonclick} fullWidth>
                   Send Message
                 </Button>
-                {/* <div>
-                  {message ? (
-                    <p className="text-green-500 text-center mt-2">
-                      Message Sent Successfully
-                    </p>
-                  ) : null}
-                </div> */}
+                
               </div>
             </form>
           </div>

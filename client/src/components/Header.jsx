@@ -33,7 +33,7 @@ const Header=()=>{
       const response=await fetch("http://localhost:5173/profile",{
         credentials:"include"
       })
-      console.log("response from /profile= "+response)
+      //console.log("response from /profile= "+response)
       const data= response.json()
       //console.log("data from /profile= "+JSON.stringify(data))
       setUser(data)

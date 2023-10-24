@@ -8,16 +8,16 @@ const EditJob=()=>{
     const {id}=useParams()
     const navigate = useNavigate()
     const [company,setCompany] = useState("");
-const [position,setPosition] = useState("");
-const [location, setWorkLocation] = useState("");
-const [workfrom, setLocationType] = useState("");
-const [edited, setEdited] = useState(false);
-const [deleted, setDeleted] = useState(false);
+    const [position,setPosition] = useState("");
+    const [location, setWorkLocation] = useState("");
+    const [workfrom, setLocationType] = useState("");
+    const [edited, setEdited] = useState(false);
+    const [deleted, setDeleted] = useState(false);
 
 
-useEffect(() => {
-    getJob();
-  }, []);
+    useEffect(() => {
+        getJob();
+    }, []);
 
   const getJob = async () => {
     try {
@@ -88,6 +88,7 @@ useEffect(() => {
           pauseOnHover: true,
         }),
         (<ToastContainer />))}
+
         <Card
         color="white"
         shadow={true}
@@ -118,12 +119,12 @@ useEffect(() => {
             <Input
               value={location}
               onChange={(e) => setWorkLocation(e.target.value)}
-              label="workLocation"
+              label="Location"
             />
             <Input
               value={workfrom}
               onChange={(e) => setLocationType(e.target.value)}
-              label="locationType"
+              label="WorkFrom"
             />
           </div>
           <Button type="submit" color="blue" className="mt-6" fullWidth>

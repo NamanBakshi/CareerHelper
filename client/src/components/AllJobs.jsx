@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import JobCard from "./JobCard";
 import homeImg from "../assets/bg.jpg";
-import { Typography } from "@material-tailwind/react";
-
+import { Input, Typography,Button } from "@material-tailwind/react";
+import {motion} from "framer-motion"
 
 const AllJobs=()=>{
     const [jobs,setJobs]=useState([])
+    const [search,setSearch]=useState("")
 
     useEffect(()=>{
         fetchJobs();
@@ -35,7 +36,7 @@ const AllJobs=()=>{
     }
 
     return(
-        <section className="bg-gray-100 min-h-[87vh] pt-12">
+        <section className="bg-gray-100 min-h-[87vh] pt-8">
             <div
         style={{
           backgroundImage: `url(${homeImg})`,
@@ -43,13 +44,64 @@ const AllJobs=()=>{
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
-        className="flex flex-col justify-center items-center w-full min-h-[30vh] mb-10"
+        className="flex flex-col justify-center items-center w-full min-h-[30vh] mb-10 "
       >
-         <Typography className="text-light-blue-500 text-2xl md:text-4xl font-bold my-5">
+        <Typography className="text-light-blue-500 text-2xl md:text-4xl font-bold mb-5">
           Search Your Dream Job
         </Typography>
 
-        {jobs.map((job) => (
+        <form className="flex justify-center items-center gap-5">
+          <div className=" w-[20rem] md:w-[32rem] relative">
+            <Input
+              type="text"
+              label="Search Job on basis of Title, Company, Location, WorkFrom"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
+          </div>
+        </form>
+
+        <div className="w-full flex flex-wrap justify-center items-center gap-5 mt-5 mb-8 ">
+          <Button
+            variant="text"
+            className="bg-white bg-opacity-50 backdrop-blur-md shadow-md"
+            size="sm"
+            onClick={() => setSearch("Remote")}
+          >
+            Remote
+          </Button>
+          
+          <Button
+            variant="text"
+            className="bg-white bg-opacity-50 backdrop-blur-md shadow-md"
+            size="sm"
+            onClick={() => setSearch("Gurgaon")}
+          >
+            Gurgaon
+          </Button>
+          <Button
+            variant="text"
+            className="bg-white bg-opacity-50 backdrop-blur-md shadow-md"
+            size="sm"
+            onClick={() => setSearch("SDE")}
+          >
+            SDE
+          </Button>
+          <Button
+            variant="text"
+            className="bg-white bg-opacity-50 backdrop-blur-md shadow-md"
+            size="sm"
+            onClick={() => setSearch("")}
+          >
+            All
+          </Button>
+        </div>
+
+        {search === "" ?
+        
+        jobs
+        .map((job) =>  
+           
               <JobCard
                 key={job._id}
                 company= {job.company}
@@ -60,8 +112,33 @@ const AllJobs=()=>{
                 author= {job?.author}
                 updatedAt={job?.updatedAt}
               />
-            )
-        )}        
+              )
+            
+            :
+            
+            jobs.filter((item)=>
+                //return (
+                item.position.toLowerCase() === (search.toLowerCase()) || 
+                item.company.toLowerCase() === (search.toLowerCase()) ||
+                item.location.toLowerCase() === (search.toLowerCase()) ||
+                item.workfrom.toLowerCase() === search.toLowerCase()
+                //)
+            ).map((job) => (
+                <JobCard
+                  key={job._id}
+                  company= {job.company}
+                  position= {job.position}
+                  location= {job.location}
+                  workfrom= {job.workfrom}
+                  id= {job._id}
+                  author= {job?.author}
+                  updatedAt={job?.updatedAt}
+                />
+              )) 
+             
+              
+        }
+                
       </div>
         </section>
     )
