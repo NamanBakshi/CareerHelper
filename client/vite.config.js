@@ -34,6 +34,18 @@ export default defineConfig({
       target:"http://localhost:5000",
       changeOrigin: true
     },
+    '/edit':{ 
+      target:"http://localhost:5000",
+      changeOrigin: true
+    },
+    '/updatejob':{ 
+      target:"http://localhost:5000",
+      changeOrigin: true
+    },
+    '/deletejob':{ 
+      target:"http://localhost:5000",
+      changeOrigin: true
+    },
   }
 }
 })

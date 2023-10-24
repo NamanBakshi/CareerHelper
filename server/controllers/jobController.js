@@ -1,16 +1,18 @@
 const jobModel = require("../models/jobModel.js");
 const jwt=require("jsonwebtoken")
 
-const addJobController=async(req,res)=>{
+
+const addJobController=async(req,res,next)=>{
     try{
         const {company,position,location,workfrom}=req.body
+
         if(!company || !position || !location || !workfrom){
             return res.status(402).send({
                 success:false,
                 message:"please enter all fields"
             })
         }
-        console.log("req.cookies="+req)
+        //console.log("req.cookies= "+(req))
         const {token}=req.cookies
         //console.log(token)
 
@@ -20,22 +22,31 @@ const addJobController=async(req,res)=>{
               message: "Please login first",
             });
           }
-          jwt.verify(token, process.env.SECRET, {}, async (err, info) => {
-            console.log("info in jwt.verify="+info)
+          jwt.verify(token, process.env.SECRET, async (err, info) => {
+            //inffo=info
+            console.log("info in jwt.verify="+JSON.stringify(info))
             if (err) {
               res.status(401).json("Not authorized");
             }
-        
-        const jobdata={
-            company,position,location,workfrom,
-            author:info.id
-        }
-        const job=new jobModel(jobdata) 
-        const jobsaved=await job.save() 
-        if(!jobsaved ){
-            return  res.status(500).send({success:false})
-        }
-        res.status(203).send({success:true,message:'job post added',jobsaved});
+        //console.log("inffo= "+inffo)
+        // const jobdata={
+        //     company,position,location,workfrom,
+        //     author:info.id
+        // }
+        // const job=new jobModel(jobdata) 
+        // const jobsaved=await job.save() 
+        await jobModel.create({
+            company,
+            position,
+            location,
+            workfrom,
+            author: info.id
+          });
+        // if(!jobsaved ){
+        //     return  res.status(500).send({success:false})
+        // }
+        res.status(203).send({success:true,message:'job post added'});
+        //next()
     })
     }catch(err){
        res.status(400).send({
@@ -69,7 +80,7 @@ const getJobsController=async (req,res)=>{
 
 const getOneJobController=async (req,res)=>{
     try{
-        const {id}=req.params //this req.params is express.js method
+        const {id}=req.params //this req.params is express.js method not react useParams()
         const job = await jobModel.findOne({ _id: id });
     if (!job) return res.status(404).json({ error: "Job not found" });
 

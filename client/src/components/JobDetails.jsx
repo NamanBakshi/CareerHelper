@@ -60,7 +60,7 @@ const JobDetails=()=>{
         <p className="text-center text-lg md:text-2xl font-semibold mb-6">
           ( {job?.company})
         </p>
-        <div className="flex flex-col justify-center items-center md:gap-5 md:flex-row w-full md:w-1/2 ">
+        <div className="flex justify-center items-center md:gap-5 md:flex-row w-full md:w-1/2 ">
           <Typography className="flex items-center my-2">
             <ClockIcon className="w-5 h-5 mr-2" />
             {date}
@@ -78,7 +78,7 @@ const JobDetails=()=>{
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="flex flex-col-reverse md:flex-row w-full md:min-h-[72vh] justify-center mb-5"
+        className="flex  md:flex-row w-full md:min-h-[72vh] justify-center mb-5"
       >
         <div className="w-[90%] md:w-1/2  px-4">
           <Link to={"/jobs"}>

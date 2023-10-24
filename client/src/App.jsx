@@ -3,6 +3,7 @@ import Footer from "./components/Footer";
 import Register from "./components/Register";
 import AllJobs from "./components/AllJobs"
 import Login from "./components/Login";
+import EditJob from "./components/EditJob"
 // import Error from "./components/Error";
  import Hero from "./components/Hero";
 import { UserContextProvider } from "./Context/userContext";
@@ -25,6 +26,7 @@ const appRouter=createBrowserRouter([  //array of object
        { path: "/login", element: <Login /> }, 
        { path: "/profile", element: <UserProfile /> },
        { path: "/job/:id", element: <JobDetails /> },
+       { path: "/edit/:id", element: <EditJob /> },
 
     ]
 }

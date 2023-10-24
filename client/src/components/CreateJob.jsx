@@ -25,18 +25,14 @@ const CreateJob=()=>{
                 body: JSON.stringify(body),
                 credentials: "include",
               })
-              if(resp.success){
+              
               setAdded(true);
               setTimeout(() => {
-                setAdded(false)
+                //setAdded(false)
                 navigate("/jobs")
                 
-              }, 1500);
-            }else{
-              // const error=await resp.json();
-              // console.log("error= "+JSON.stringify(error))
-              // console.log("resp= "+resp)
-            }
+              }, 2000);
+            
             } catch (err) {
               console.error(err.message);
             }

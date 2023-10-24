@@ -126,7 +126,7 @@ const Header=()=>{
                 </MenuItem>
 
                 <MenuItem>
-                  <Link to={"/addjob"} className="flex gap-2">
+                  <Link to={"/addjobs"} className="flex gap-2">
                    
                     <PencilSquareIcon className="h-5 w-5" />
                     Post a Job
