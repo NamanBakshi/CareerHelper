@@ -4,8 +4,12 @@ import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import { BASE_URL } from "../../link";
+import { useContext } from "react";
+import { UserContext } from "../Context/userContext";
 
 const CreateJob=()=>{
+  const { user } = useContext(UserContext);
     const [company,setCompany]=useState("")
     const [location,setLocation]=useState("")
     const [position,setPosition]=useState("")
@@ -19,19 +23,25 @@ const CreateJob=()=>{
             try {
               const body = { company, position, location, workfrom };
               //console.log("body handleaddjob= "+JSON.stringify(body))
-              const resp= await fetch("http://localhost:5173/addjobs", {
+              const resp= await fetch(`https://backend-82wc.onrender.com/addjobs`, {
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
+                headers: { "Content-Type": "application/json",'Authorization':localStorage.localtoken },
                 body: JSON.stringify(body),
                 credentials: "include",
+                //accesstoken:user.token
+                
               })
-              
+             
+              if(resp.success){
               setAdded(true);
               setTimeout(() => {
                 //setAdded(false)
                 navigate("/jobs")
                 
-              }, 2000);
+              }, 2000)
+            }else{
+              console.log("job post not added")
+            }
             
             } catch (err) {
               console.error(err.message);

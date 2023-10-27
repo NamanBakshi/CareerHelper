@@ -5,6 +5,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { motion } from "framer-motion";
 import { Card, Input, Button, Typography } from "@material-tailwind/react";
+import { BASE_URL } from "../../link";
 
 const Register=()=>{
     const [name, setName] = useState("");
@@ -19,7 +20,7 @@ const Register=()=>{
     try {
       const body = { name, email, password };
       const response=await fetch(
-        "http://localhost:5173/register",
+        `https://backend-82wc.onrender.com/register`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -55,7 +56,7 @@ const Register=()=>{
         //navigate("/login")
       }
     } catch (err) {
-      console.log("error",err);
+      //console.log("error",err);
     }
   }
 

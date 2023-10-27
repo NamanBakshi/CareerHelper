@@ -4,7 +4,7 @@ const logoutController=async (req,res)=>{
     try {
                       //name of cookie
         res.clearCookie("token", {
-        domain: "localhost:5173",
+        domain: ["localhost:5173","render.com","netlify.com"],
         httpOnly: true,
         });
         //res.Cookies.Clear()
@@ -21,7 +21,7 @@ const getProfileController=(req,res)=>{
       if (err) {
         res.status(401).json("Not authorized");
       }
-      console.log("info= "+JSON.stringify(info))
+      //console.log("info= "+JSON.stringify(info))
       res.json(info);
     
     })

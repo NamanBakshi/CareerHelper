@@ -10,17 +10,17 @@ const userRoute = require("./routes/userRoute");
 const jobRoute = require("./routes/jobRoute");
 
 const PORT = process.env.PORT || 5000;
-const MONGO_URL = process.env.MONGO_URL || "mongodb://0.0.0.0:27017/careerhelper";
+const MONGO_URL = process.env.MONGO_URL;
 
 connectDB(MONGO_URL)
 
-// app.use(
-//     cors({
-//       origin: ["https://careerhelp.vercel.app", "https://careerhelp.netlify.app", "http://localhost:5173"], // <-- location of the react app were connecting to
-//       methods: ["GET", "POST", "PATCH", "DELETE"],
-//       credentials: true,
-//     })
-//   );
+app.use(
+    cors({
+      origin: ["https://careerhelp.vercel.app", "https://careerhelp.netlify.app", "http://localhost:5173"], // <-- location of the react app were connecting to
+      methods: ["GET", "POST", "PATCH", "DELETE"],
+      credentials: true,
+    })
+  );
   
   app.use(express.json());
   app.use(cookieParser());

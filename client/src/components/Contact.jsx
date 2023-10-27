@@ -22,7 +22,6 @@ const submitonclick=()=>{
       email:""
     })
     setTimeout(()=>{
-      
       showMessage(false)
     },2000)
     showMessage(true)

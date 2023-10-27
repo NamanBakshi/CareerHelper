@@ -19,7 +19,7 @@ const registerController=async(req,res)=>{
             password:hashedPass
         }
         const data=new user(userdata)
-        console.log(userdata)
+        //console.log(userdata)
         //saving to database
         const saved=await data.save();
         //console.log("saved= "+saved)
@@ -70,20 +70,19 @@ const loginController=async (req,res)=>{
                 };
                 //creating a jwt token with the help of jsonwebtoken package
                 var token = jwt.sign(payload,process.env.SECRET);
-                return  res.cookie("token",token,
-                {
-                httpOnly:true
-                }).status(200).json({
+                return  res.cookie("token",token
+                ).status(200).json({
                     success:true ,
                     message :"Login Successful" ,
                     id:findmail._id,
                     name:findmail.name,
-                    email:findmail.email
+                    email:findmail.email,
+                    token:token
                     }) ;
 
           }
     }catch(err){
-        console.log(err)
+        //console.log(err)
     }
 }
 

@@ -11,7 +11,7 @@ export default defineConfig({
       changeOrigin: true
     },
     '/login':{ 
-      target:"http://localhost:5000",
+      target:"https://backend-82wc.onrender.com",
       changeOrigin: true
     },
     '/logout':{ 
@@ -27,7 +27,7 @@ export default defineConfig({
       changeOrigin: true
     },
     '/addjobs':{ 
-      target:"http://localhost:5000",
+      target:"https://backend-82wc.onrender.com",
       changeOrigin: true
     },
     '/job':{ 

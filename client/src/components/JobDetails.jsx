@@ -8,6 +8,7 @@ import {
   ClockIcon,
   MapPinIcon,
 } from "@heroicons/react/24/outline";
+import { BASE_URL } from "../../link";
 
 const JobDetails=()=>{
     const { id } = useParams();
@@ -30,21 +31,21 @@ const JobDetails=()=>{
     useEffect(() =>{ 
     async function fetchData(){
         try{
-            const response=await fetch(`http://localhost:5173/job/${id}`,{
+            const response=await fetch(`https://backend-82wc.onrender.com/job/${id}`,{
                 method:"GET"})
             if(response.status === 200){
                 const jsondata=await response.json()
                 setJob(jsondata.job)
             }       
         }catch(err){
-            console.log("err in fetchdata= "+err)
+           // console.log("err in fetchdata= "+err)
         }
     }
         fetchData()
 }, [])
 
-      console.log("job= ")
-      console.log(JSON.stringify(job))
+      //console.log("job= ")
+      //console.log(JSON.stringify(job))
       const date = new Date(job?.createdAt).toLocaleDateString("en-US", {
         day: "numeric",
         month: "long",

@@ -6,14 +6,11 @@ import { UserContext } from "../Context/userContext";
 
 import {
     Navbar,
-    Collapse,
     Button,
-    IconButton,
     Menu,
     MenuHandler,
     MenuList,
     MenuItem,
-    Avatar,
     Typography,
   } from "@material-tailwind/react";
 
@@ -23,6 +20,7 @@ import {
     PowerIcon,
     UserCircleIcon,
   } from "@heroicons/react/24/outline";
+import { BASE_URL } from "../../link";
 
 const Header=()=>{
     const { user, setUser } = useContext(UserContext);
@@ -30,7 +28,7 @@ const Header=()=>{
     const navigate = useNavigate();
 
     const fetchUser=async (req,res)=>{
-      const response=await fetch("http://localhost:5173/profile",{
+      const response=await fetch(`https://backend-82wc.onrender.com/profile`,{
         credentials:"include"
       })
       //console.log("response from /profile= "+response)
@@ -41,7 +39,7 @@ const Header=()=>{
 
     const Logout=async(req,res)=>{
       try{
-      const response = await fetch("http://localhost:5173/logout",
+      const response = await fetch(`https://backend-82wc.onrender.com/logout`,
         {
           method: "POST",
           headers: {
@@ -64,7 +62,7 @@ const Header=()=>{
     },[])
 
     const id=user?.id
-    console.log("id= "+id)
+    //console.log("id= "+id)
     return (
         <Navbar className="sticky inset-0 z-10 h-max max-w-full rounded-none py-2 px-4 lg:px-8 lg:py-2">
             <div className="flex items-center justify-around text-blue-gray-900">
@@ -101,16 +99,7 @@ const Header=()=>{
               <Menu placement="bottom-end" className="">
               <MenuHandler className="">
                 <Button variant="text" size="sm" className="p-2">
-                  {/* <Avatar
-                    src={
-                      
-                      "https://avatars.githubusercontent.com/u/86846633?s=400&u=d1d6d861e9169351b5f04379b63fa6f1ead1b8a1&v=4"
-                    }
-                    withBorder={true}
-                    size="sm"
-                    alt="logo"
-                    className="p-0.5"
-                  /> */}
+                
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-10 h-8">
   <path strokeLinecap="round" strokeLinejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
 </svg>
@@ -163,9 +152,6 @@ const Header=()=>{
               </Link>
               </>
               }
-
-
-
             </div>
 
             </div>

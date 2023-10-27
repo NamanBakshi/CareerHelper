@@ -3,6 +3,10 @@ import JobCard from "./JobCard";
 import homeImg from "../assets/bg.jpg";
 import { Input, Typography,Button } from "@material-tailwind/react";
 import {motion} from "framer-motion"
+import {BASE_URL} from "../../link";
+const baseurl=import.meta.env.VITE_URL
+//import { defineConfig, loadEnv } from 'vite';
+
 
 const AllJobs=()=>{
     const [jobs,setJobs]=useState([])
@@ -14,16 +18,17 @@ const AllJobs=()=>{
 
     const fetchJobs=async (req,res)=>{
         try{
-        const data=await fetch("http://localhost:5173/getjobs",{
+         // console.log("url= "+baseurl)
+        const data=await fetch(`https://backend-82wc.onrender.com/getjobs`,{
             method:"GET",
-            // headers: {
-            //     Accept: "application/json",
-            //     "Content-Type": "application/json",
-            //   }
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+              }
         })
         //console.log("data from getjobs= "+data)
         const jsonData = await data.json();
-        console.log ("json data= "+JSON.stringify(jsonData))
+        //console.log ("json data= "+JSON.stringify(jsonData))
         if(jsonData.success){
             setJobs(jsonData.jobs)
 
@@ -31,7 +36,7 @@ const AllJobs=()=>{
             console.log("couldnt get jobs")
         }
         }catch(err){
-            console.log(err)
+            console.log(err.message)
         }
     }
 

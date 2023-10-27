@@ -6,6 +6,7 @@ import { Link,useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { UserContext } from "../Context/userContext";
+import { BASE_URL } from "../../link";
 
 const Login=()=>{
     const [email,setEmail]=useState("")
@@ -21,25 +22,33 @@ const Login=()=>{
       e.preventDefault()
       try{
         const body={email,password}
-        const response=await fetch("http://localhost:5173/login",{
+        
+        const response=await fetch(`https://backend-82wc.onrender.com/login`,{
           method:"POST",
           headers:{
-            'Content-Type':'application/json'
+            'Content-Type':'application/json',
+
           },
           body:JSON.stringify(body),
           credentials:"include"
         })
-        console.log("login data"+response)
+        const data = await response.json();
+        console.log("login data"+JSON.stringify(response))
+        
         switch (response.status) {
           case 200:
-            const data = await response.json();
+            
+            //cookies.set(data.token)
+            console.log("localtoken= "+data.token)
+            localStorage.setItem('localtoken',data.token)
             setUser(data);
+            //localStorage.setItem('token',data.token)
             showMessage(true);
             setTimeout(() => {
               //setRedirect(true);
               //window.location.href = "/register";
               navigate("/jobs")
-            }, 1000);
+            }, 1500);
             break;
           case 401:
             showemailError(true);
@@ -71,7 +80,7 @@ const Login=()=>{
       transition={{ duration: 0.5 }}
       className="flex flex-col items-center justify-center h-[85vh] bg-gray-100"
     >
-      {/* {message &&
+      {message &&
         (toast("Login Successful!", {
           position: "top-center",
           autoClose: 1000,
@@ -79,7 +88,7 @@ const Login=()=>{
           closeOnClick: true,
           pauseOnHover: true,
         }),
-        (<ToastContainer />))} */}
+        (<ToastContainer />))}
 
         <Card color="white" shadow={true} className="p-8 items-center border-2 border-blue-200">
         <Typography variant="h4" color="blue-gray">

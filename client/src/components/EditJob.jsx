@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useParams,useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { BASE_URL } from "../../link";
 
 const EditJob=()=>{
     const {id}=useParams()
@@ -22,7 +23,7 @@ const EditJob=()=>{
   const getJob = async () => {
     try {
       const response = await fetch(
-        `http://localhost:5173/job/${id}`
+        `https://backend-82wc.onrender.com/job/${id}`
       );
       const jsonData = await response.json();
       const { company, position, location, workfrom } = jsonData.job;
@@ -39,7 +40,7 @@ const EditJob=()=>{
         e.preventDefault();
         try {
           const body = { company, position, location, workfrom };
-          await fetch(`http://localhost:5173/updatejob/${id}`, {
+          await fetch(`https://backend-82wc.onrender.com/updatejob/${id}`, {
             method: "PATCH",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(body),
@@ -49,13 +50,13 @@ const EditJob=()=>{
             navigate("/jobs");
           }, 2000);
         } catch (err) {
-          console.error(err.message);
+          //console.error(err.message);
         }
       }
 
       const handleDelete = async () => {
         try {
-          await fetch(`http://localhost:5173/deletejob/${id}`, {
+          await fetch(`https://backend-82wc.onrender.com/deletejob/${id}`, {
             method: "DELETE",
           });
     
@@ -64,7 +65,7 @@ const EditJob=()=>{
             navigate("/jobs");
           }, 2000);
         } catch (err) {
-          console.error(err.message);
+          //console.error(err.message);
         }
       };
 

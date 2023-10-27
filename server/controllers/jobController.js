@@ -2,7 +2,7 @@ const jobModel = require("../models/jobModel.js");
 const jwt=require("jsonwebtoken")
 
 
-const addJobController=async(req,res,next)=>{
+const addJobController=async(req,res)=>{
     try{
         const {company,position,location,workfrom}=req.body
 
@@ -14,7 +14,7 @@ const addJobController=async(req,res,next)=>{
         }
         //console.log("req.cookies= "+(req))
         const {token}=req.cookies
-        //console.log(token)
+        console.log(token)
 
         if (!token) {
             return res.status(403).send({
@@ -22,19 +22,13 @@ const addJobController=async(req,res,next)=>{
               message: "Please login first",
             });
           }
-          jwt.verify(token, process.env.SECRET, async (err, info) => {
+          jwt.verify(token, process.env.SECRET,{} ,async (err, info) => {
             //inffo=info
-            console.log("info in jwt.verify="+JSON.stringify(info))
+            //console.log("info in jwt.verify="+JSON.stringify(info))
             if (err) {
               res.status(401).json("Not authorized");
             }
-        //console.log("inffo= "+inffo)
-        // const jobdata={
-        //     company,position,location,workfrom,
-        //     author:info.id
-        // }
-        // const job=new jobModel(jobdata) 
-        // const jobsaved=await job.save() 
+
         await jobModel.create({
             company,
             position,
