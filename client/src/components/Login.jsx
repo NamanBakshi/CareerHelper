@@ -21,7 +21,7 @@ const Login=()=>{
       e.preventDefault()
       try{
         const body={email,password}
-        const response=await fetch("http://localhost:5173/login",{
+        const response=await fetch("https://career-helper-backend.vercel.app/login",{
           method:"POST",
           headers:{
             'Content-Type':'application/json'
