@@ -14,12 +14,12 @@ const AllJobs=()=>{
 
     const fetchJobs=async (req,res)=>{
         try{
-        const data=await fetch("http://localhost:5173/getjobs",{
+        const data=await fetch("https://career-helper-frontend.vercel.app/getjobs",{
             method:"GET",
-            // headers: {
-            //     Accept: "application/json",
-            //     "Content-Type": "application/json",
-            //   }
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+              }
         })
         //console.log("data from getjobs= "+data)
         const jsonData = await data.json();
