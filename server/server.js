@@ -16,7 +16,7 @@ connectDB(MONGO_URL)
 
 app.use(
     cors({
-      origin: "https://career-helper-frontend.vercel.app", 
+      "Access-Control-Allow-Origin": "https://career-helper-frontend.vercel.app", 
       methods: ["GET", "POST", "PATCH", "DELETE"],
       credentials: true
     })
