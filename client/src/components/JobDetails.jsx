@@ -15,7 +15,7 @@ const JobDetails=()=>{
 
     // const fetchData=async ()=>{
     //     try{
-    //         const response=await fetch(`http://localhost:5173/job/${id}`,{
+    //         const response=await fetch(`https://career-helper-backend.vercel.app/job/${id}`,{
     //             method:"GET"})
     //         if(response.status === 200){
     //             console.log(JSON.stringify(response))
