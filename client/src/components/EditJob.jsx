@@ -22,7 +22,7 @@ const EditJob=()=>{
   const getJob = async () => {
     try {
       const response = await fetch(
-        `http://localhost:5173/job/${id}`
+        `https://career-helper-backend.vercel.app/job/${id}`
       );
       const jsonData = await response.json();
       const { company, position, location, workfrom } = jsonData.job;
@@ -39,7 +39,7 @@ const EditJob=()=>{
         e.preventDefault();
         try {
           const body = { company, position, location, workfrom };
-          await fetch(`http://localhost:5173/updatejob/${id}`, {
+          await fetch(`https://career-helper-backend.vercel.app/updatejob/${id}`, {
             method: "PATCH",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(body),
@@ -55,7 +55,7 @@ const EditJob=()=>{
 
       const handleDelete = async () => {
         try {
-          await fetch(`http://localhost:5173/deletejob/${id}`, {
+          await fetch(`https://career-helper-backend.vercel.app/${id}`, {
             method: "DELETE",
           });
     
