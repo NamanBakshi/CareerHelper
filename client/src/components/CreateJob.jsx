@@ -19,7 +19,7 @@ const CreateJob=()=>{
             try {
               const body = { company, position, location, workfrom };
               //console.log("body handleaddjob= "+JSON.stringify(body))
-              const resp= await fetch("http://localhost:5173/addjobs", {
+              const resp= await fetch("https://career-helper-frontend.vercel.app/addjobs", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(body),
