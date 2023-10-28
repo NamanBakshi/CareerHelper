@@ -70,9 +70,9 @@ const loginController=async (req,res)=>{
                 };
                 //creating a jwt token with the help of jsonwebtoken package
                 var token = jwt.sign(payload,process.env.SECRET);
-                return  res.cookie("token",token,
-                {
-                httpOnly:true
+                return  res.cookie("token",token,{
+                domain:"https://career-helper-frontend.vercel.app",
+                expires: new Date(Date.now() + 864000000)
                 }).status(200).json({
                     success:true ,
                     message :"Login Successful" ,
