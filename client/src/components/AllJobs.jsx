@@ -14,7 +14,7 @@ const AllJobs=()=>{
 
     const fetchJobs=async (req,res)=>{
         try{
-        const data=await fetch("https://career-helper-frontend.vercel.app/getjobs",{
+        const data=await fetch("https://career-helper-backend.vercel.app/getjobs",{
             method:"GET",
             headers: {
                 Accept: "application/json",
