@@ -19,8 +19,7 @@ const AllJobs=()=>{
             headers: {
                 Accept: "application/json",
                 "Content-Type": "application/json"
-              },
-            mode: 'cors'
+              }
         })
         //console.log("data from getjobs= "+data)
         const jsonData = await data.json();
