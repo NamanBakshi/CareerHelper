@@ -18,7 +18,8 @@ app.use(
     cors({
       "Access-Control-Allow-Origin": "https://career-helper-frontend.vercel.app", 
       methods: ["GET", "POST", "PATCH", "DELETE"],
-      credentials: true
+      credentials: true,
+      mode:"no-cors"
     })
   );
   
