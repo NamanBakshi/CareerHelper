@@ -30,7 +30,7 @@ const Header=()=>{
     const navigate = useNavigate();
 
     const fetchUser=async (req,res)=>{
-      const response=await fetch("http://localhost:5173/profile",{
+      const response=await fetch("https://career-helper-backend.vercel.app/profile",{
         credentials:"include"
       })
       //console.log("response from /profile= "+response)
@@ -41,7 +41,7 @@ const Header=()=>{
 
     const Logout=async(req,res)=>{
       try{
-      const response = await fetch("http://localhost:5173/logout",
+      const response = await fetch("https://career-helper-backend.vercel.app/logout",
         {
           method: "POST",
           headers: {
