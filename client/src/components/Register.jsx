@@ -19,7 +19,7 @@ const Register=()=>{
     try {
       const body = { name, email, password };
       const response=await fetch(
-        "http://localhost:5173/register",
+        "https://career-helper-backend.vercel.app/register",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
