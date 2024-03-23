@@ -70,8 +70,15 @@ const loginController=async (req,res)=>{
                 };
                 //creating a jwt token with the help of jsonwebtoken package
                 var token = jwt.sign(payload,process.env.SECRET);
+<<<<<<< HEAD
                 return  res.cookie("token",token
                 ).status(200).json({
+=======
+                return  res.cookie("token",token,{
+                domain:"career-helper-frontend.vercel.app",
+                expires: new Date(Date.now() + 864000000)
+                }).status(200).json({
+>>>>>>> 66983624229e908583bf4fae0e9c273cc5005bba
                     success:true ,
                     message :"Login Successful" ,
                     id:findmail._id,

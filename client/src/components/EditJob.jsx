@@ -23,7 +23,10 @@ const EditJob=()=>{
   const getJob = async () => {
     try {
       const response = await fetch(
-        `https://backend-82wc.onrender.com/job/${id}`
+// <<<<<<< HEAD
+//         `https://backend-82wc.onrender.com/job/${id}`
+// =======
+        `https://career-helper-backend.vercel.app/job/${id}`
       );
       const jsonData = await response.json();
       const { company, position, location, workfrom } = jsonData.job;
@@ -40,7 +43,10 @@ const EditJob=()=>{
         e.preventDefault();
         try {
           const body = { company, position, location, workfrom };
-          await fetch(`https://backend-82wc.onrender.com/updatejob/${id}`, {
+// <<<<<<< HEAD
+//           await fetch(`https://backend-82wc.onrender.com/updatejob/${id}`, {
+// =======
+          await fetch(`https://career-helper-backend.vercel.app/updatejob/${id}`, {
             method: "PATCH",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(body),
@@ -56,7 +62,10 @@ const EditJob=()=>{
 
       const handleDelete = async () => {
         try {
-          await fetch(`https://backend-82wc.onrender.com/deletejob/${id}`, {
+// <<<<<<< HEAD
+//           await fetch(`https://backend-82wc.onrender.com/deletejob/${id}`, {
+// =======
+          await fetch(`https://career-helper-backend.vercel.app/${id}`, {
             method: "DELETE",
           });
     

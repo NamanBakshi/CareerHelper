@@ -18,12 +18,19 @@ const AllJobs=()=>{
 
     const fetchJobs=async (req,res)=>{
         try{
-         // console.log("url= "+baseurl)
-        const data=await fetch(`https://backend-82wc.onrender.com/getjobs`,{
+// <<<<<<< HEAD
+//          // console.log("url= "+baseurl)
+//         const data=await fetch(`https://backend-82wc.onrender.com/getjobs`,{
+//             method:"GET",
+//             headers: {
+//                 Accept: "application/json",
+//                 "Content-Type": "application/json",
+// =======
+        const data=await fetch("https://career-helper-backend.vercel.app/getjobs",{
             method:"GET",
             headers: {
                 Accept: "application/json",
-                "Content-Type": "application/json",
+                "Content-Type": "application/json"
               }
         })
         //console.log("data from getjobs= "+data)

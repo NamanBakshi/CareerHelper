@@ -16,9 +16,16 @@ connectDB(MONGO_URL)
 
 app.use(
     cors({
+<<<<<<< HEAD
       origin: ["https://careerhelp.vercel.app", "https://careerhelp.netlify.app", "http://localhost:5173"], // <-- location of the react app were connecting to
       methods: ["GET", "POST", "PATCH", "DELETE"],
       credentials: true,
+=======
+      "Access-Control-Allow-Origin": "https://career-helper-frontend.vercel.app", 
+      methods: ["GET", "POST", "PATCH", "DELETE"],
+      credentials: true,
+      mode:"no-cors"
+>>>>>>> 66983624229e908583bf4fae0e9c273cc5005bba
     })
   );
   
@@ -28,5 +35,5 @@ app.use(
 
 
 app.listen(PORT, () => {
-  console.log(`CareerHelper Server is Running on ${PORT} `);
+  //console.log(`CareerHelper Server is Running on ${PORT} `);
 });

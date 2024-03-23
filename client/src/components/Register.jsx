@@ -20,7 +20,10 @@ const Register=()=>{
     try {
       const body = { name, email, password };
       const response=await fetch(
-        `https://backend-82wc.onrender.com/register`,
+// <<<<<<< HEAD
+//         `https://backend-82wc.onrender.com/register`,
+// =======
+        "https://career-helper-backend.vercel.app/register",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

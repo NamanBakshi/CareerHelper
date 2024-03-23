@@ -23,7 +23,10 @@ const CreateJob=()=>{
             try {
               const body = { company, position, location, workfrom };
               //console.log("body handleaddjob= "+JSON.stringify(body))
-              const resp= await fetch(`https://backend-82wc.onrender.com/addjobs`, {
+// <<<<<<< HEAD
+//               const resp= await fetch(`https://backend-82wc.onrender.com/addjobs`, {
+// =======
+              const resp= await fetch("https://career-helper-backend.vercel.app/addjobs", {
                 method: "POST",
                 headers: { "Content-Type": "application/json",'Authorization':localStorage.localtoken },
                 body: JSON.stringify(body),

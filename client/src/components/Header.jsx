@@ -28,7 +28,10 @@ const Header=()=>{
     const navigate = useNavigate();
 
     const fetchUser=async (req,res)=>{
-      const response=await fetch(`https://backend-82wc.onrender.com/profile`,{
+// <<<<<<< HEAD
+//       const response=await fetch(`https://backend-82wc.onrender.com/profile`,{
+// =======
+      const response=await fetch("https://career-helper-backend.vercel.app/profile",{
         credentials:"include"
       })
       //console.log("response from /profile= "+response)
@@ -39,7 +42,10 @@ const Header=()=>{
 
     const Logout=async(req,res)=>{
       try{
-      const response = await fetch(`https://backend-82wc.onrender.com/logout`,
+// <<<<<<< HEAD
+//       const response = await fetch(`https://backend-82wc.onrender.com/logout`,
+// =======
+      const response = await fetch("https://career-helper-backend.vercel.app/logout",
         {
           method: "POST",
           headers: {

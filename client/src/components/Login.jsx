@@ -22,8 +22,8 @@ const Login=()=>{
       e.preventDefault()
       try{
         const body={email,password}
-        
-        const response=await fetch(`https://backend-82wc.onrender.com/login`,{
+
+        const response=await fetch("https://career-helper-backend.vercel.app/login",{
           method:"POST",
           headers:{
             'Content-Type':'application/json',
